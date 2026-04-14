@@ -9,9 +9,9 @@ def generate_answer(prompt: str):
 
     # Call Groq chat completion API
     response = client.chat.completions.create(
-        model="llama-3-8b-8192",
+        model="llama-3.1-8b-instant",
         messages=[{"role": "user", "content": prompt}]
     )
 
     # Return generated text response
-    return response.choices[0].messages.content
+    return response.choices[0].message.content
