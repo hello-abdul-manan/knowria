@@ -1,4 +1,4 @@
-from langchain.document_loaders import PyPDFLoader, TextLoader
+from langchain_community.document_loaders import PyPDFLoader, TextLoader
 
 def load_document(file_path: str):
     """Load a PDF or text file and return LangChain documents."""
