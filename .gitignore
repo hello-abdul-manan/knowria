@@ -1,0 +1,21 @@
+# Secrets
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environment
+venv/
+.venv/
+
+# PyCharm settings
+.idea/
+
+# Vector DB / embeddings
+*.faiss
+*.pkl
+*.index
+
+# 🧾 Logs
+*.log
