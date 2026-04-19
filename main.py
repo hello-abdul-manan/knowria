@@ -1,7 +1,11 @@
-from app.services.rag_service import RAGService
+from fastapi import FastAPI
+from app.api.routes import router
+from app.services.rag_service import rag_service
 
-rag_service = RAGService()
-rag_service.ingest('data/sample.txt')
-rag_service.load_vectorstore()
-response = rag_service.query("What is the leave policy?")
-print("Response:", response)
+app = FastAPI(title="Knowria AI")
+app.include_router(router)
+
+# Load vectorstore on app start
+@app.on_event("startup")
+def startup():
+    rag_service.load_vectorstore()
