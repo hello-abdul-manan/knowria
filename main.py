@@ -16,5 +16,9 @@ CORSMiddleware,
 
 # Load vectorstore on app start
 @app.on_event("startup")
-def startup():
-    rag_service.load_vectorstore()
+async def startup():
+    try:
+        rag_service.load_vectorstore()
+        print("✅ Vectorstore loaded successfully")
+    except Exception as e:
+        print(f"⚠️ Error loading vectorstore: {e}")
