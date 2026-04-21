@@ -5,7 +5,7 @@ from app.retrieval.vector_store import create_vector_store
 from app.retrieval.retriever import get_retriever
 from app.generation.rag_pipeline import run_rag
 from langchain_community.vectorstores import FAISS
-from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_community.embeddings import FakeEmbeddings
 
 # Path to save vector store
 VECTOR_PATH = "data/vectorstore"
@@ -33,10 +33,7 @@ class RAGService:
     def load_vectorstore(self):
         """Load vector store and retriever from local storage."""
 
-        # Use HuggingFace embedding model
-        embeddings = HuggingFaceEmbeddings(
-            model_name = "sentence-transformers/all-MiniLM-L6-v2"
-        )
+        embeddings = FakeEmbeddings(size=384)
 
         # Load if exists
         if os.path.exists(VECTOR_PATH):
